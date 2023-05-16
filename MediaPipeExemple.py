@@ -15,7 +15,8 @@ with mp_face_mesh.FaceMesh(
   for idx, file in enumerate(IMAGE_FILES):
     image = cv2.imread(file)
     # Convert the BGR image to RGB before processing.
-    results = face_mesh.process(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
+    image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+    results = face_mesh.process(image)
 
     # Print and draw face mesh landmarks on the image.
     if not results.multi_face_landmarks:
